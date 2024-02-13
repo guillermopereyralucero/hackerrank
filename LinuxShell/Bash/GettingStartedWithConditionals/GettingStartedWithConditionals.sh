@@ -1,12 +1,8 @@
-read x
-read y
-if test $x -lt $y
+read c
+if [[ "$c" = "y" || "$c" = "Y" ]]
 then
-    echo "X is less than Y"
-elif test $x -gt $y
+    echo "YES"
+elif [[ "$c" = "n" || "$c" = "N" ]]
 then
-    echo "X is greater than Y"
-elif test $x -eq $y
-then
-    echo "X is equal to Y"
+    echo "NO"
 fi
