@@ -112,3 +112,194 @@ There is NO WARRANTY, to the extent per‐ mitted by law.
 SEE ALSO shuf(1), uniq(1) Full documentation at: <https://www.gnu.org/software/coreutils/sort> 
 or available locally via: info '(coreutils) sort invocation' GNU coreutils 8.30 July 2018 SORT(1)
 COMMENT
+
+#EJEMPLOS:
+
+# -b, --ignore-leading-blanks:
+#Ignora los espacios en blanco iniciales en cada línea antes de ordenar.
+#Ejemplo:
+
+$ cat example.txt
+line 1
+  line 2
+line 3
+$ sort -b example.txt
+  line 2
+line 1
+line 3
+
+#-d, --dictionary-order:
+#Ordena solo según caracteres y espacios en blanco, ignorando puntuación y otros caracteres especiales.
+#Ejemplo:
+
+$ cat example.txt
+cat
+dog!
+bird
+$ sort -d example.txt
+bird
+cat
+dog!
+
+#-f, --ignore-case:
+#Ignora mayúsculas y minúsculas al ordenar.
+#Ejemplo:
+
+$ cat example.txt
+Apple
+banana
+apple
+$ sort -f example.txt
+Apple
+apple
+banana
+
+#-g, --general-numeric-sort:
+#Ordena de forma numérica, tratando los números incrustados como números en lugar de cadenas de caracteres.
+#Ejemplo:
+
+$ cat example.txt
+10
+2
+100
+$ sort -g example.txt
+2
+10
+100
+
+#-h, --human-numeric-sort:
+#Ordena de forma numérica, con números seguidos de sufijos opcionales como 'K' o 'M' interpretados como 1,000 y 1,000,000, respectivamente.
+#Ejemplo:
+
+$ cat example.txt
+100K
+2M
+10K
+$ sort -h example.txt
+10K
+100K
+2M
+
+#-i, --ignore-nonprinting:
+#Ignora caracteres no imprimibles al ordenar.
+#Ejemplo:
+
+$ cat example.txt
+line1
+line2
+line^H3
+$ sort -i example.txt
+line1
+line2
+line^H3
+
+#-M, --month-sort:
+#Ordena alfabéticamente por nombre de mes.
+#Ejemplo:
+
+$ cat example.txt
+Jun
+Apr
+Jan
+$ sort -M example.txt
+Jan
+Apr
+Jun
+
+#-n, --numeric-sort:
+#Ordena de forma numérica en lugar de alfabéticamente.
+#Ejemplo:
+
+$ cat example.txt
+100
+10
+2
+$ sort -n example.txt
+2
+10
+100
+
+#-r, --reverse:
+#Ordena en orden inverso (descendente).
+#Ejemplo:
+
+$ cat example.txt
+line1
+line3
+line2
+$ sort -r example.txt
+line3
+line2
+line1
+
+#-R, --random-sort:
+#Ordena de forma aleatoria.
+#Ejemplo:
+
+$ cat example.txt
+line1
+line2
+line3
+$ sort -R example.txt
+line2
+line3
+line1
+
+#--sort=WORD:
+#Especifica el método de ordenación. Las opciones comunes son general-numeric, human-numeric, numeric, random, month, y version-sort.
+#Ejemplo:
+
+$ cat example.txt
+100
+10
+2
+$ sort --sort=general-numeric example.txt
+2
+10
+100
+
+#-t, --field-separator=SEP:
+#Especifica un delimitador de campos para ordenar por un campo específico.
+#Ejemplo:
+
+$ cat example.txt
+banana:5
+apple:3
+orange:7
+$ sort -t: -k2 example.txt
+apple:3
+banana:5
+orange:7
+
+#-u, --unique:
+#Elimina las líneas duplicadas después de ordenar.
+#Ejemplo:
+
+$ cat example.txt
+line1
+line2
+line1
+$ sort -u example.txt
+line1
+line2
+
+#-V, --version-sort:
+#Ordena las versiones de acuerdo con su valor numérico.
+#Ejemplo:
+
+$ cat example.txt
+ver-1.2
+ver-1.10
+ver-1.1
+$ sort -V example.txt
+ver-1.1
+ver-1.2
+ver-1.10
+
+#--help:
+#Muestra la ayuda del comando sort.
+
+#--version:
+#Muestra la información de versión del comando sort.
+
+
