@@ -8,4 +8,7 @@ Station.jpg
 
 where LAT_N is the northern latitude and LONG_W is the western longitude.*/
 
-
+SELECT 
+    CAST(ROUND(SUM(lat_n), 4) AS DECIMAL(10, 4)) AS TotalLatN
+FROM STATION
+WHERE lat_n BETWEEN 38.7880 AND 137.2345;
